@@ -1,0 +1,15 @@
+{
+  "generator-puppy": {
+    "projectName": "BostonBuilt",
+    "projectDesc": "Boston's Best Design and Technology Companies",
+    "features": [
+      "includeUpbase",
+      "includeJQuery",
+      "includeModernizr"
+    ],
+    "includeIndex": true,
+    "includeSampleData": true,
+    "runDate": "2016-05-27T19:05:59.846Z",
+    "runVersion": "0.3.0"
+  }
+}

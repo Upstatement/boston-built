@@ -1,0 +1,29 @@
+
+// Import Upbase
+@import "upbase/scss/_upbase";
+
+* {
+  color: #444;
+  font-family: "Source Sans Pro";
+  font-weight: normal;
+  box-sizing: border-box;
+}
+
+.grid {
+  margin-bottom: 50px
+}
+
+.ui-item, .grid > div {
+  margin-bottom: 10px
+}
+
+.grid > div > div {
+  background-color: #bada55;
+  color: darken(#bada55, 25%);
+  min-height: 100px;
+  padding: 10px;
+}
+
+.grid-3 {
+  @include grid(3);
+}

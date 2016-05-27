@@ -1,1 +1,0 @@
-{"version":3,"sources":["styles.scss","styles.css"],"names":[],"mappings":"AAAA;EACC,YAAY;EACZ,sBAAsB,EACtB;;ACCD,6PAA6P","file":"styles.css","sourceRoot":"/source/","sourcesContent":["h1 {\n\tcolor: blue;\n\ttransform: color 0.2s;\n}"]}
