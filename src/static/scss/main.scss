@@ -287,6 +287,14 @@ h1 {
   }
 }
 
+.contact-info,
+.location-block {
+	> p {
+		font-family: $font-family-mono;
+		font-weight: font-weight-light;
+	}
+}
+
 footer {
 	position: absolute;
 	display: flex;
