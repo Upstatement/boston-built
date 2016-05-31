@@ -16,14 +16,23 @@ body {
 // Nav
 
 .global-nav {
+	position: relative;
 	width: 20%;
 	height: 100vh;
 	padding: 30px;
 	background-color: white;
+	box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+	transition: all .2s linear;
+
+	&:hover {
+		box-shadow: 0px 0px 20px rgba(0,0,0,.2);
+	}
 }
 
 .logo-wrapper {
 	position: relative;
+	cursor: pointer;
+
 	&:after {
 		@include pseudo;
 		display: block;
