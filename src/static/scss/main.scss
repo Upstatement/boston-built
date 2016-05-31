@@ -2,4 +2,324 @@
 // Import Upbase
 @import "upbase/scss/upbase";
 
-// Project styles go here
+// Import Variables
+@import "variables.scss";
+
+// Global styles
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: black;
+
+	@include mq($bp-tablet) {
+		flex-direction: row;
+	}
+}
+
+// Nav
+
+.global-nav {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 30px;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+	transition: box-shadow .2s linear;
+
+	&:hover {
+		box-shadow: 0px 0px 20px rgba(0,0,0,.2);
+	}
+
+	@include mq($bp-tablet) {
+		display: block;
+		width: 20%;
+		min-width: 150px;
+		max-width: 250px;
+		height: auto;
+		padding: 0 30px;
+	}
+
+	@include mq($bp-xl) {
+		padding: 0 50px;
+	}
+}
+
+.logo-wrapper {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+
+	@include mq($bp-tablet) {
+		display: block;
+		margin: 30px 0 7vh;
+
+		&:after {
+			@include pseudo;
+			display: block;
+			width: 110%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: -10%;
+			z-index: 0;
+			background-image: url('/static/img/boston-built-logo-yellow.svg');
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+	}
+}
+
+.logo {
+	position: relative;
+	width: 75px;
+  height: 26px;
+	z-index: 1;
+	background-image: url('/static/img/boston-built-logo.svg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+
+	@include mq($bp-tablet) {
+		width: 110%;
+		height: auto;
+		padding-top: 68%;
+		top: 0;
+		left: -10%;
+		transition: all .1s linear;
+
+		&:hover {
+			transform: translate(2px, -2px);
+		}
+	}
+}
+
+.global-nav__links {
+	margin: 0;
+	padding: 0;
+	> a {
+		display: inline-block;
+		position: relative;
+		// margin-bottom: 20px;
+		font-family: $font-family-mono;
+		color: black;
+		text-transform: uppercase;
+		text-decoration: none;
+		list-style: none;
+		z-index: 0;
+
+		&:first-of-type {
+			margin-right: 20px;
+
+			@include mq($bp-tablet) {
+				margin-right: 0;
+			}
+		}
+
+		&:after {
+			@include pseudo;
+	    position: absolute;
+	    margin-top: -13px;
+	    padding: 0 10px;
+	    z-index: -1;
+	    width: 0;
+	    margin-left: -10px;
+	    border-top: 2px solid $color-yellow;
+	    opacity: 0;
+	    transition: all .2s linear;
+		}
+
+		&:hover, &:active {
+			&:after {
+	    	width: 100%;
+	    	opacity: 1;
+			}
+	  }
+
+	  @include mq($bp-tablet) {
+	  	margin-bottom: 20px;
+	  	float: left;
+	  	clear: both;
+	  }
+	}
+}
+
+// Page content
+
+h1 {
+	margin: 0;
+	font-family: $font-family-usual;
+	font-weight: $font-weight-light;
+	font-size: 24pt;
+	display: block;
+  border-top: $border-thin;
+  border-bottom: $border-thin;
+  padding: 10px 0;
+
+  @include mq($bp-tablet) {
+  	font-size: 36pt;
+  	padding: 20px 0;
+  }
+}
+
+.page-content--wrapper {
+	background-color: $color-yellow;
+	flex-grow: 1;
+	position: relative;
+
+	@include mq($bp-tablet) {
+		background-color: black;
+		display: flex;
+  	flex-direction: column;
+  	justify-content: space-between;
+		padding: 0px 30px 0 0;
+	}
+}
+
+// Pure CSS hexagon
+// .hexagon {
+// 	width: 44px;
+//   height: 30px;
+//   transform: rotate(90deg);
+//   background: black;
+//   position: relative;
+//   align-self: flex-end;
+//   right: 15%;
+//   bottom: -15px;
+
+//   &:before {
+// 		content: "";
+// 	  position: absolute;
+// 	  top: -12px;
+// 	  left: 0;
+// 	  width: 0;
+// 	  height: 0;
+// 	  border-left: 22px solid transparent;
+// 	  border-right: 22px solid transparent;
+// 	  border-bottom: 12px solid black;
+// 	}
+
+// 	&:after {
+// 		content: "";
+// 	  position: absolute;
+// 	  bottom: -12px;
+// 	  left: 0;
+// 	  width: 0;
+// 	  height: 0;
+// 	  border-left: 22px solid transparent;
+// 	  border-right: 22px solid transparent;
+// 	  border-top: 12px solid black;
+// 	}
+// }
+
+
+// SVG hexagon
+
+.hexagon {
+	position: relative;
+  margin: 0 10% -36px auto;
+	width: 40px;
+	height: 36px;
+	background-image: url('/static/img/hexagon.svg');
+	background-size: cover;
+
+	@include mq($bp-tablet) {
+		align-self: flex-end;
+		margin: 8px 15% -22px 0;
+		width: 50px;
+		height: 44px;
+	}
+}
+
+.page-content {
+	background-color: $color-yellow;
+	border-top: 18px solid black;
+	padding:10%;
+
+	@include mq($bp-tablet) {
+		border: none;
+		padding: 15%;
+		flex-grow: 1;
+	}
+}
+
+.page-tag {
+	background-color: black;
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  color: $color-yellow;
+  font-family: $font-family-mono;
+  font-weight: $font-weight-light;
+  font-size: 10pt;
+  cursor: pointer;
+  transition: all .1s linear;
+
+  &:hover {
+  	background-color: $color-yellow;
+  	color: black;
+  	border: $border-thin;
+  }
+
+  @include mq($bp-tablet) {
+  	font-size: 12pt;
+  	padding: 5px 10px;
+  }
+}
+
+.body-txt {
+	font-family: $font-family-usual;
+  font-size: 10pt;
+  line-height: 14pt;
+  margin: 20px 0;
+
+  @include mq($bp-tablet) {
+  	font-size: 12pt;
+  	line-height: 16pt;
+  	font-weight: $font-weight-light;
+  }
+}
+
+footer {
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 80%;
+	bottom: 0;
+	padding: 6px 10%;
+	background-color: black;
+
+  @include mq($bp-tablet) {
+  	position: static;
+  	width: auto;
+  	padding: 6px 15%;
+  	margin-top: -18px;
+  }
+
+  > p,
+	> p > a {
+		margin: 0;
+		display: inline;
+		font-family: $font-family-mono;
+		font-weight: $font-weight-light;
+		font-size: 10pt;
+		color: white;
+
+		&:first-of-type {
+			margin-bottom: 10px;
+
+			@include mq($bp-md) {
+				margin: 0;
+			}
+		}
+	}
+}
+

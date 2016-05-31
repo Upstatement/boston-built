@@ -16,7 +16,14 @@
   </head>
   <body>
 
-  {% block content %}{% endblock %}
+  {% include "partials/nav.twig" %}
+
+  <div class="page-content--wrapper">
+    {% block content %}
+    {% endblock %}
+
+    {% include "partials/footer.twig" %}
+  </div>
 
   {% block scripts %}
   <!-- build:js /static/js/vendor.js -->
