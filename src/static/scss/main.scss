@@ -10,6 +10,7 @@
 body {
 	display: flex;
 	margin: 0;
+	background-color: black;
 }
 
 // Nav
@@ -21,23 +22,69 @@ body {
 	background-color: white;
 }
 
+.logo-wrapper {
+	position: relative;
+	&:after {
+		@include pseudo;
+		display: block;
+		width: 110%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: -10%;
+		z-index: 0;
+		background-image: url('/static/img/boston-built-logo-yellow.svg');
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+}
+
 .logo {
+	position: relative;
 	width: 110%;
 	margin-left: -10%;
 	margin-bottom: 60px;
+	z-index: 1;
+	transition: all .15s linear;
+
+	&:hover {
+		transform: translate(2px, -2px);
+	}
 }
 
 .global-nav__links {
 	margin: 0;
 	padding: 0;
 	> a {
-		display: block;
+		display: inline-block;
+		position: relative;
 		margin-bottom: 20px;
 		font-family: $font-family-mono;
 		color: black;
 		text-transform: uppercase;
 		text-decoration: none;
 		list-style: none;
+		z-index: 0;
+
+		&:after {
+			@include pseudo;
+	    position: absolute;
+	    margin-top: -13px;
+	    padding: 0 10px;
+	    z-index: -1;
+	    width: 0;
+	    margin-left: -10px;
+	    border-top: 2px solid $color-yellow;
+	    opacity: 0;
+	    transition: all .2s linear;
+		}
+
+		&:hover, &:active {
+			&:after {
+	    	width: 100%;
+	    	opacity: 1;
+			}
+	  }
 	}
 }
 
@@ -55,7 +102,7 @@ h1 {
 }
 
 .page-content--wrapper {
-	padding: 30px 30px 30px 0;
+	padding: 30px 30px 0 0;
 	display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -71,10 +118,20 @@ h1 {
 .page-tag {
 	background-color: black;
   display: inline-block;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 3px;
+  border: 1px solid transparent;
   color: $color-yellow;
   font-family: $font-family-mono;
+  font-weight: $font-weight-light;
+  cursor: pointer;
+  transition: all .1s linear;
+
+  &:hover {
+  	background-color: $color-yellow;
+  	color: black;
+  	border: $border-thin;
+  }
 }
 
 .body-txt {
@@ -82,5 +139,22 @@ h1 {
   font-weight: $font-weight-light;
   font-size: 12pt;
   line-height: 16pt;
+}
+
+footer {
+	padding: 6px 15%;
+  margin-top: -18px;
+  display: flex;
+  justify-content: space-between;
+
+  > p,
+	> p > a {
+		margin: 0;
+		display: inline;
+		font-family: $font-family-mono;
+		font-weight: $font-weight-light;
+		font-size: 10pt;
+		color: white;
+	}
 }
 
