@@ -8,56 +8,95 @@
 // Global styles
 
 body {
-	display: flex;
 	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	background-color: black;
+
+	@include mq($bp-tablet) {
+		flex-direction: row;
+	}
 }
 
 // Nav
 
 .global-nav {
 	position: relative;
-	width: 20%;
-	height: 100vh;
-	padding: 30px;
+	z-index: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 30px;
+	padding: 20px;
 	background-color: white;
 	box-shadow: 0px 0px 10px rgba(0,0,0,.2);
-	transition: all .2s linear;
+	transition: box-shadow .2s linear;
 
 	&:hover {
 		box-shadow: 0px 0px 20px rgba(0,0,0,.2);
 	}
+
+	@include mq($bp-tablet) {
+		display: block;
+		width: 20%;
+		min-width: 150px;
+		max-width: 250px;
+		height: auto;
+		padding: 0 30px;
+	}
+
+	@include mq($bp-xl) {
+		padding: 0 50px;
+	}
 }
 
 .logo-wrapper {
+	display: inline-block;
 	position: relative;
 	cursor: pointer;
 
-	&:after {
-		@include pseudo;
+	@include mq($bp-tablet) {
 		display: block;
-		width: 110%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: -10%;
-		z-index: 0;
-		background-image: url('/static/img/boston-built-logo-yellow.svg');
-		background-repeat: no-repeat;
-		background-size: 100%;
+		margin: 30px 0 7vh;
+
+		&:after {
+			@include pseudo;
+			display: block;
+			width: 110%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: -10%;
+			z-index: 0;
+			background-image: url('/static/img/boston-built-logo-yellow.svg');
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
 	}
 }
 
 .logo {
 	position: relative;
-	width: 110%;
-	margin-left: -10%;
-	margin-bottom: 60px;
+	width: 75px;
+  height: 26px;
 	z-index: 1;
-	transition: all .15s linear;
+	background-image: url('/static/img/boston-built-logo.svg');
+	background-repeat: no-repeat;
+	background-size: 100%;
 
-	&:hover {
-		transform: translate(2px, -2px);
+	@include mq($bp-tablet) {
+		width: 110%;
+		height: auto;
+		padding-top: 68%;
+		top: 0;
+		left: -10%;
+		transition: all .1s linear;
+
+		&:hover {
+			transform: translate(2px, -2px);
+		}
 	}
 }
 
@@ -67,13 +106,21 @@ body {
 	> a {
 		display: inline-block;
 		position: relative;
-		margin-bottom: 20px;
+		// margin-bottom: 20px;
 		font-family: $font-family-mono;
 		color: black;
 		text-transform: uppercase;
 		text-decoration: none;
 		list-style: none;
 		z-index: 0;
+
+		&:first-of-type {
+			margin-right: 20px;
+
+			@include mq($bp-tablet) {
+				margin-right: 0;
+			}
+		}
 
 		&:after {
 			@include pseudo;
@@ -94,6 +141,12 @@ body {
 	    	opacity: 1;
 			}
 	  }
+
+	  @include mq($bp-tablet) {
+	  	margin-bottom: 20px;
+	  	float: left;
+	  	clear: both;
+	  }
 	}
 }
 
@@ -103,19 +156,30 @@ h1 {
 	margin: 0;
 	font-family: $font-family-usual;
 	font-weight: $font-weight-light;
-	font-size: 36pt;
+	font-size: 24pt;
 	display: block;
   border-top: $border-thin;
   border-bottom: $border-thin;
-  padding: 20px 0;
+  padding: 10px 0;
+
+  @include mq($bp-tablet) {
+  	font-size: 36pt;
+  	padding: 20px 0;
+  }
 }
 
 .page-content--wrapper {
-	padding: 0px 30px 0 0;
-	display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-	background-color: black;
+	background-color: $color-yellow;
+	flex-grow: 1;
+	position: relative;
+
+	@include mq($bp-tablet) {
+		background-color: black;
+		display: flex;
+  	flex-direction: column;
+  	justify-content: space-between;
+		padding: 0px 30px 0 0;
+	}
 }
 
 // Pure CSS hexagon
@@ -159,31 +223,42 @@ h1 {
 
 .hexagon {
 	position: relative;
-	align-self: flex-end;
-  right: 15%;
-  top: 0;
-  margin: 8px 0 -22px 0;
-	width: 50px;
-	height: 44px;
+  margin: 0 10% -36px auto;
+	width: 40px;
+	height: 36px;
 	background-image: url('/static/img/hexagon.svg');
 	background-size: cover;
+
+	@include mq($bp-tablet) {
+		align-self: flex-end;
+		margin: 8px 15% -22px 0;
+		width: 50px;
+		height: 44px;
+	}
 }
 
 .page-content {
 	background-color: $color-yellow;
-	flex-grow: 1;
-	padding:15%;
+	border-top: 18px solid black;
+	padding:10%;
+
+	@include mq($bp-tablet) {
+		border: none;
+		padding: 15%;
+		flex-grow: 1;
+	}
 }
 
 .page-tag {
 	background-color: black;
   display: inline-block;
-  padding: 5px 10px;
+  padding: 3px 5px;
   border-radius: 3px;
   border: 1px solid transparent;
   color: $color-yellow;
   font-family: $font-family-mono;
   font-weight: $font-weight-light;
+  font-size: 10pt;
   cursor: pointer;
   transition: all .1s linear;
 
@@ -192,20 +267,42 @@ h1 {
   	color: black;
   	border: $border-thin;
   }
+
+  @include mq($bp-tablet) {
+  	font-size: 12pt;
+  	padding: 5px 10px;
+  }
 }
 
 .body-txt {
 	font-family: $font-family-usual;
-  font-weight: $font-weight-light;
-  font-size: 12pt;
-  line-height: 16pt;
+  font-size: 10pt;
+  line-height: 14pt;
+  margin: 20px 0;
+
+  @include mq($bp-tablet) {
+  	font-size: 12pt;
+  	line-height: 16pt;
+  	font-weight: $font-weight-light;
+  }
 }
 
 footer {
-	padding: 6px 15%;
-  margin-top: -18px;
-  display: flex;
-  justify-content: space-between;
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 80%;
+	bottom: 0;
+	padding: 6px 10%;
+	background-color: black;
+
+  @include mq($bp-tablet) {
+  	position: static;
+  	width: auto;
+  	padding: 6px 15%;
+  	margin-top: -18px;
+  }
 
   > p,
 	> p > a {
@@ -215,6 +312,14 @@ footer {
 		font-weight: $font-weight-light;
 		font-size: 10pt;
 		color: white;
+
+		&:first-of-type {
+			margin-bottom: 10px;
+
+			@include mq($bp-md) {
+				margin: 0;
+			}
+		}
 	}
 }
 
