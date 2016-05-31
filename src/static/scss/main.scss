@@ -249,9 +249,14 @@ h1 {
 	}
 }
 
+.tags {
+	margin-bottom: 5px; 
+}
+
 .page-tag {
 	background-color: black;
   display: inline-block;
+  margin: 0 0 5px 0;
   padding: 3px 5px;
   border-radius: 3px;
   border: 1px solid transparent;
@@ -291,8 +296,38 @@ h1 {
 .location-block {
 	> p {
 		font-family: $font-family-mono;
-		font-weight: font-weight-light;
+		margin: 0;
 	}
+}
+
+.contact-info {
+	border-top: $border-thin;
+	border-bottom: $border-thin;
+	padding: 20px 0;
+
+	> p {
+		display: inline-block;
+
+		&:nth-of-type(2) {
+			&:before {
+				@include mq($bp-tablet) {
+					content: '・';
+					display: inline;
+					margin-right: 3px;
+				}
+			}
+		}
+	}
+}
+
+.location-block {
+	margin-bottom: 70px;
+}
+
+.location-block--address {
+	width: 50%;
+	padding: 20px 0;
+	border-bottom: $border-thin;
 }
 
 footer {
