@@ -152,22 +152,6 @@ body {
 
 // Page content
 
-h1 {
-	margin: 0;
-	font-family: $font-family-usual;
-	font-weight: $font-weight-light;
-	font-size: 24pt;
-	display: block;
-  border-top: $border-thin;
-  border-bottom: $border-thin;
-  padding: 10px 0;
-
-  @include mq($bp-tablet) {
-  	font-size: 36pt;
-  	padding: 20px 0;
-  }
-}
-
 .page-content--wrapper {
 	background-color: $color-yellow;
 	flex-grow: 1;
@@ -178,80 +162,117 @@ h1 {
 		display: flex;
   	flex-direction: column;
   	justify-content: space-between;
-		padding: 0px 30px 0 0;
 	}
 }
 
-// Pure CSS hexagon
-// .hexagon {
-// 	width: 44px;
-//   height: 30px;
-//   transform: rotate(90deg);
-//   background: black;
-//   position: relative;
-//   align-self: flex-end;
-//   right: 15%;
-//   bottom: -15px;
-
-//   &:before {
-// 		content: "";
-// 	  position: absolute;
-// 	  top: -12px;
-// 	  left: 0;
-// 	  width: 0;
-// 	  height: 0;
-// 	  border-left: 22px solid transparent;
-// 	  border-right: 22px solid transparent;
-// 	  border-bottom: 12px solid black;
-// 	}
-
-// 	&:after {
-// 		content: "";
-// 	  position: absolute;
-// 	  bottom: -12px;
-// 	  left: 0;
-// 	  width: 0;
-// 	  height: 0;
-// 	  border-left: 22px solid transparent;
-// 	  border-right: 22px solid transparent;
-// 	  border-top: 12px solid black;
-// 	}
-// }
-
-
-// SVG hexagon
-
-.hexagon {
+.page-content__image--wrapper {
 	position: relative;
-  margin: 0 10% -36px auto;
-	width: 40px;
-	height: 36px;
-	background-image: url('/static/img/hexagon.svg');
-	background-size: cover;
+	z-index: 0;
 
-	@include mq($bp-tablet) {
-		align-self: flex-end;
-		margin: 8px 15% -22px 0;
-		width: 50px;
-		height: 44px;
+	&:after {
+		@include pseudo;
+		position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+	}
+}
+
+.page-content__image {
+	width: 100%;
+}
+
+//"Tabs" that make the hexagon cutout
+
+.page-tab--left {
+	position: absolute;
+ 	top: -20px;
+  left: 0;
+  width: 75%;
+  height: 20px;
+  background: $color-yellow;
+
+  @include mq($bp-sm) {
+  	height: 30px;
+  	top: -30px;
+  }
+
+  @include mq(1200px) {
+  	width: 79%;
+  }
+
+	&:after {
+		@include pseudo;
+		position: absolute;
+    right: -18px;
+		border-right: 18px solid transparent;
+    border-bottom: 30px solid $color-yellow;
+	}
+}
+
+.page-tab--right {
+	position: absolute;
+  top: -20px;
+  right: 0;
+  width: 10%;
+  height: 20px;
+  background: $color-yellow;
+
+  @include mq($bp-sm) {
+  	height: 30px;
+  	top: -30px;
+  }
+
+  @include mq($bp-tablet) {
+  	width: 15%;
+  }
+
+	&:before {
+		@include pseudo;
+		position: absolute;
+    left: -18px;
+		border-left: 18px solid transparent;
+    border-bottom: 30px solid $color-yellow;
 	}
 }
 
 .page-content {
 	background-color: $color-yellow;
-	border-top: 18px solid black;
+	border-top: 40px solid black;
 	padding:10%;
+	position: relative;
+
+	@include mq($bp-sm) {
+		border-top: 60px solid black;
+	}
 
 	@include mq($bp-tablet) {
 		border: none;
 		padding: 15%;
 		flex-grow: 1;
+		margin: 60px 30px 0 0;
 	}
+
+	&.has-image {
+		margin-top: -10%;
+		border: none;
+
+		@include mq($bp-tablet) {
+			margin-top: -20%;
+			padding: 10% 15%;
+		}
+	}
+}
+
+.tags {
+	margin-bottom: 5px; 
 }
 
 .page-tag {
 	background-color: black;
   display: inline-block;
+  margin: 0 0 5px 0;
   padding: 3px 5px;
   border-radius: 3px;
   border: 1px solid transparent;
@@ -274,6 +295,23 @@ h1 {
   }
 }
 
+
+h1 {
+	margin: 0;
+	font-family: $font-family-usual;
+	font-weight: $font-weight-light;
+	font-size: 24pt;
+	display: block;
+  border-top: $border-thin;
+  border-bottom: $border-thin;
+  padding: 10px 0;
+
+  @include mq($bp-tablet) {
+  	font-size: 36pt;
+  	padding: 20px 0;
+  }
+}
+
 .body-txt {
 	font-family: $font-family-usual;
   font-size: 10pt;
@@ -287,6 +325,58 @@ h1 {
   }
 }
 
+.contact-info,
+.location-block {
+	> a, p {
+		font-family: $font-family-mono;
+		margin: 0;
+		color: black;
+	}
+}
+
+.contact-info {
+	border-top: $border-thin;
+	border-bottom: $border-thin;
+	padding: 20px 0;
+
+	&--phone, &--email {
+		display: block;
+		cursor: pointer;
+		text-decoration: underline;
+		border-bottom: 1px solid transparent;
+		transition: all .1s linear;
+
+		@include mq($bp-md) {
+			text-decoration: none;
+			display: inline-block;
+
+			&:hover {
+				border-bottom: $border-thin;
+			}
+		}
+	}
+
+	&--dot {
+		display: none;
+		@include mq($bp-md) {
+			display: inline-block;
+		}
+	}
+}
+
+.location-block {
+	margin-bottom: 70px;
+}
+
+.location-block--address {
+	padding: 20px 0;
+	border-bottom: $border-thin;
+
+	@include mq($bp-lg) {
+		width: 50%;
+	}
+}
+
 footer {
 	position: absolute;
 	display: flex;
@@ -298,10 +388,10 @@ footer {
 	background-color: black;
 
   @include mq($bp-tablet) {
-  	position: static;
+  	position: relative;
   	width: auto;
   	padding: 6px 15%;
-  	margin-top: -18px;
+  	margin: -18px 30px 0 0;
   }
 
   > p,
