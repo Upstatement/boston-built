@@ -460,3 +460,54 @@ footer {
 		}
 	}
 }
+
+.archive-companies {
+	margin-top: 40px;
+}
+
+.archive-company {
+	display: flex;
+	border-top: $border-thin;
+	padding: 40px 0;
+	justify-content: space-between;
+  align-items: center;
+}
+
+.archive-company__name--block {
+	display: flex;
+	align-items: center;
+
+	> a {
+		display: inline;
+		text-decoration: none;
+		margin-left: 10px;
+	}
+}
+
+.archive-company__name {
+	margin: 0;
+	font-family: $font-family-usual;
+	font-weight: $font-weight-light;
+	font-size: 16pt;
+}
+
+.archive-company__specialties {
+	margin: 0;
+	font-family: $font-family-mono;
+	width: 30%;
+}
+
+.archive-company__location {
+	font-family: $font-family-mono;
+	font-weight: 400;
+	font-size: 12pt;
+
+	&:before {
+		@include pseudo;
+		display: inline-block;
+		background-image: url("/static/img/icon_location.svg");
+    width: 11px;
+    height: 14px;
+    margin: 0px 10px -2px 0;
+	}
+}
