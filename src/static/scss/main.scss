@@ -242,6 +242,7 @@ body {
 	border-top: 40px solid black;
 	padding:10%;
 	position: relative;
+	margin-bottom: 60px;
 
 	@include mq($bp-sm) {
 		border-top: 60px solid black;
@@ -468,9 +469,15 @@ footer {
 .archive-company {
 	display: flex;
 	border-top: $border-thin;
-	padding: 40px 0;
+	padding: 20px 0;
+	flex-direction: column;
 	justify-content: space-between;
-  align-items: center;
+
+  @include mq($bp-tablet) {
+  	flex-direction: row;
+  	align-items: center;
+  	padding: 40px 0;
+  }
 }
 
 .archive-company__name--block {
@@ -481,7 +488,45 @@ footer {
 		display: inline;
 		text-decoration: none;
 		margin-left: 10px;
+		border: $border-thin;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		transition: all .1s linear;
+
+		// @include mq($bp-tablet) {
+		// 	border: none;
+		// }
 	}
+}
+
+.archive-company__site {
+	// padding: 5px 8px;
+	background-image: url('/static/img/icon_link-out_circle.svg');
+
+	&:hover {
+		background-image: url('/static/img/icon_link-out_circle_black.svg');
+	}
+
+
+	// @include mq($bp-tablet) {
+	// 	padding: 0;
+	// }
+}
+
+.archive-company__email {
+	background-image: url('/static/img/icon_email_circle.svg');
+	
+	&:hover {
+		background-image: url('/static/img/icon_email_circle_black.svg');
+	}
+
+	// @include mq($bp-tablet) {
+	// 	border: none;
+	// 	background-image: url('/static/img/icon_email.svg');
+	// 	width: 14px;
+	// 	height: 10px;
+	// }
 }
 
 .archive-company__name {
@@ -492,22 +537,37 @@ footer {
 }
 
 .archive-company__specialties {
-	margin: 0;
+	margin: 15px 0;
 	font-family: $font-family-mono;
-	width: 30%;
+
+	@include mq($bp-tablet) {
+		margin: 0;
+		width: 30%;
+	}
 }
 
 .archive-company__location {
+	margin: 0;
 	font-family: $font-family-mono;
 	font-weight: 400;
 	font-size: 12pt;
+	color: black;
+	text-decoration: none;
 
 	&:before {
 		@include pseudo;
 		display: inline-block;
 		background-image: url("/static/img/icon_location.svg");
-    width: 11px;
-    height: 14px;
-    margin: 0px 10px -2px 0;
+    width: 12px;
+    height: 17px;
+    background-size: cover;
+    margin: 0px 10px -3px 0;
+    transition: all .1s linear;
 	}
+
+	&:hover {
+		&:before {
+    	background-image: url("/static/img/icon_location_black.svg");
+    }
+  }
 }
