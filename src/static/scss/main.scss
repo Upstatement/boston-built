@@ -242,6 +242,7 @@ body {
 	border-top: 40px solid black;
 	padding:10%;
 	position: relative;
+	margin-bottom: 60px;
 
 	@include mq($bp-sm) {
 		border-top: 60px solid black;
@@ -413,3 +414,157 @@ footer {
 	}
 }
 
+// Archive Page
+
+// Color overrides
+
+.is-archive {
+	&.global-nav {
+		background-color: $color-yellow;
+
+		> .logo-wrapper {
+			&:after {
+				background-image: url("/static/img/boston-built-logo-white.svg");
+			}
+		}
+
+		> .global-nav__links > a { 
+			&:after {
+				border-top-color: white;
+			}
+		}
+	}
+
+	&.page-content--wrapper {
+		background-color: white;
+
+		@include mq($bp-tablet) {
+			background-color: black;
+		}
+	}
+
+	&.page-content {
+		background-color: white;
+		> .page-tab--left {
+			background-color: white;
+
+			&:after {
+				border-bottom-color: white;
+			}
+		}
+		> .page-tab--right {
+			background-color: white;
+
+			&:before {
+				border-bottom-color: white;
+			}
+		}
+	}
+}
+
+.archive-companies {
+	margin-top: 40px;
+}
+
+.archive-company {
+	display: flex;
+	border-top: $border-thin;
+	padding: 20px 0;
+	flex-direction: column;
+	justify-content: space-between;
+
+  @include mq(1100px) {
+  	flex-direction: row;
+  	align-items: center;
+  	padding: 40px 0;
+  }
+}
+
+.archive-company__name--block {
+	display: flex;
+	align-items: center;
+
+	> a {
+		display: inline;
+		text-decoration: none;
+		margin-left: 10px;
+		width: 30px;
+		height: 30px;
+
+		> .circle-icon {
+
+			.circle,.icon {
+				stroke:#000;
+				stroke-miterlimit:10;
+				transition: all .1s linear;
+				stroke-width:1.2;
+			}
+
+			.circle { 
+				fill:#fff;
+			}
+
+			.icon {
+				fill:none;
+			}
+
+			&:hover {
+				.circle {
+					fill: #000000;
+				}
+
+				.icon {
+					stroke: #ffffff;
+				}
+			}
+		}
+	}
+}
+
+.archive-company__name {
+	margin: 0;
+	font-family: $font-family-usual;
+	font-weight: $font-weight-light;
+	font-size: 16pt;
+}
+
+.archive-company__specialties {
+	margin: 15px 0;
+	font-family: $font-family-mono;
+
+	@include mq(1100px) {
+		margin: 0;
+		width: 30%;
+	}
+}
+
+.archive-company__location {
+	margin: 0;
+	font-family: $font-family-mono;
+	font-weight: 400;
+	font-size: 12pt;
+	color: black;
+	text-decoration: none;
+
+	> svg {
+		display: inline-block;
+		width: 12px;
+    margin-bottom: -3px;
+
+		.location-pin-outer, .location-pin-inner {
+			stroke:#000;
+			fill:#fff;
+			stroke-miterlimit:10;
+			stroke-width: 1.2;
+			transition: all .1s linear;
+		}
+	}
+
+	&:hover {
+		> svg {
+			.location-pin-outer {
+				fill: #000000;
+			}
+		}
+	}
+}
