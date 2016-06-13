@@ -365,6 +365,19 @@ h1 {
 	}
 }
 
+.link-block {
+	@extend .contact-info;
+
+	> a {
+		@extend .contact-info--email;
+		&:after {
+			content: '→';
+			display: inline;
+			padding-left: 5px;
+		}
+	}
+}
+
 .location-block {
 	margin-bottom: 70px;
 }
@@ -568,3 +581,4 @@ footer {
 		}
 	}
 }
+
