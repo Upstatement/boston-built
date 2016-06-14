@@ -431,7 +431,7 @@ footer {
 
 // Color overrides
 
-.is-archive {
+.color-inverse {
 	&.global-nav {
 		background-color: $color-yellow;
 
@@ -471,6 +471,15 @@ footer {
 			&:before {
 				border-bottom-color: white;
 			}
+		}
+	}
+
+	&.page-tag {
+		color: white;
+
+		&:hover {
+			background-color: white;
+			color: black;
 		}
 	}
 }
@@ -582,3 +591,29 @@ footer {
 	}
 }
 
+.contact-email {
+	> input[type=submit] {
+		padding: 10px;
+		background-color: black;
+		color: white;
+		border: none;
+		box-shadow: $button-shadow;
+		border-radius: 3px;
+		font-family: $font-family-mono;
+		font-size: 10pt;
+		font-weight: $font-weight-light;
+		text-transform: uppercase;
+		letter-spacing: 1pt;
+		cursor: pointer;
+		transition: all .3s;
+
+		&:hover, &:focus {
+			background-color: lighten(black, 25%);
+			outline: none;
+		}
+
+		&:active {
+			box-shadow: $button-shadow-pressed;
+		}
+	}
+}
