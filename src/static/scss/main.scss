@@ -41,8 +41,8 @@ body {
 	@include mq($bp-tablet) {
 		display: block;
 		width: 20%;
-		min-width: 150px;
-		max-width: 250px;
+		min-width: 100px;
+		max-width: 150px;
 		height: auto;
 		padding: 0 30px;
 	}
@@ -255,6 +255,10 @@ body {
 		margin: 60px 30px 0 0;
 	}
 
+	@include mq($bp-xl) {
+		padding: 15% 20%;
+	}
+
 	&.has-image {
 		margin-top: -10%;
 		border: none;
@@ -262,6 +266,10 @@ body {
 		@include mq($bp-tablet) {
 			margin-top: -20%;
 			padding: 10% 15%;
+		}
+
+		@include mq($bp-xl) {
+			padding: 10% 20%;
 		}
 	}
 }
@@ -507,8 +515,12 @@ footer {
 	align-items: center;
 
 	> a {
-		display: inline;
 		text-decoration: none;
+		color: black;
+	}
+
+	> .archive-company__site, .archive-company__email {
+		display: inline;
 		margin-left: 10px;
 		width: 30px;
 		height: 30px;
