@@ -99,7 +99,11 @@ label {
 form {
 	width: 100%;
 	max-width: $fh-input-max-width;
-	margin: 60px auto;
+	margin: 40px auto;
+
+	@include mq($bp-sm) {
+		margin: 60px auto;
+	}
 }
 
 /* Input & Textarea ------------------ */
@@ -276,7 +280,11 @@ input[type="image"] {
 }
 
 input[type="submit"] {
-	margin-top: 40px;
+	margin-top: 20px;
+
+	@include mq($bp-sm) {
+		margin-top: 40px;
+	}
 }
 
 input[type="image"] {
