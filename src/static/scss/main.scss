@@ -5,6 +5,8 @@
 // Import Variables
 @import "variables.scss";
 
+// Import FormHack
+@import "formhack/formhack.scss";
 // Global styles
 
 body {
@@ -627,5 +629,21 @@ footer {
 		&:active {
 			box-shadow: $button-shadow-pressed;
 		}
+	}
+}
+
+// Form layout
+.contact-form__input-wrapper {
+	&.layout-block {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&.layout__two-up {
+		width: 49%;
+	}
+
+	&.layout__three-up {
+		width: 32%;
 	}
 }
