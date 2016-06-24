@@ -323,17 +323,19 @@ h1 {
   }
 }
 
-.body-txt {
-	font-family: $font-family-usual;
-  font-size: 10pt;
-  line-height: 16pt;
-  margin: 20px 0;
+.body-content {
+	> p {
+		font-family: $font-family-usual;
+	  font-size: 10pt;
+	  line-height: 16pt;
+	  margin: 20px 0;
 
-  @include mq($bp-tablet) {
-  	font-size: 12pt;
-  	line-height: 18pt;
-  	font-weight: $font-weight-light;
-  }
+	  @include mq($bp-tablet) {
+	  	font-size: 12pt;
+	  	line-height: 18pt;
+	  	font-weight: $font-weight-light;
+	  }
+	}
 }
 
 .contact-info,
