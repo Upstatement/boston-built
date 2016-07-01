@@ -70,7 +70,7 @@ body {
 			top: 0;
 			left: 0;
 			z-index: 0;
-			background-image: url('/static/img/boston-built-logo-yellow.svg');
+			background-image: url('../../static/img/boston-built-logo-yellow.svg');
 			background-repeat: no-repeat;
 			background-size: 100%;
 		}
@@ -82,7 +82,7 @@ body {
 	width: 75px;
   height: 27px;
 	z-index: 1;
-	background-image: url('/static/img/boston-built-logo.svg');
+	background-image: url('../../static/img/boston-built-logo.svg');
 	background-repeat: no-repeat;
 	background-size: 100%;
 
@@ -447,7 +447,7 @@ footer {
 
 		> .logo-wrapper {
 			&:after {
-				background-image: url("/static/img/boston-built-logo-white.svg");
+				background-image: url("../../static/img/boston-built-logo-white.svg");
 			}
 		}
 
