@@ -1,4 +1,8 @@
 # BostonBuilt
-Boston&#39;s Best Design and Technology Companies
+Design prototype for Boston&#39;s Best Design and Technology Companies
 
-A [Puppy](https://github.com/Upstatement/generator-puppy) powered project.
+### To run...
+```
+$ npm install
+$ gulp
+```
